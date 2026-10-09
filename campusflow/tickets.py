@@ -1,6 +1,6 @@
 from priority import calculate_priority
 
-def create_ticket(title, category, urgency, affected_user):
+def create_ticket(title, category, urgency, affected_users):
 
     title = title.strip()
     
@@ -21,8 +21,26 @@ def create_ticket(title, category, urgency, affected_user):
         raise ValueError("Urgencies level does not exist")
     
 
-    if affected_user < 1: 
-        raise ValueError("There must be atleast one person affected")
+    if not isinstance(affected_users, int) or isinstance(affected_users, bool)or affected_users < 1 :
+        raise ValueError("Incorrect input; user must be atleast 1 written in number")
     
-    priority = calculate_priority(urgency, affected_user)
+    priority = calculate_priority(urgency, affected_users)
 
+    my_ticket = {
+    "id": "T001",
+    "title": title,
+    "category": category,
+    "urgency": urgency,
+    "affected_users": affected_users,
+    "priority": priority,
+    "status": "open",
+    "assigned_to": None
+    }
+
+    return my_ticket
+
+
+# print(create_ticket("", "network", "high", 15))
+# print(create_ticket("Wi-Fi is down", "finance", "high", 15))
+print(create_ticket("Wi-Fi is down", "network", "high", "five"))
+# print(create_ticket("Wi-Fi is down", "network", "high", True))
