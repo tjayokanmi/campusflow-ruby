@@ -1,0 +1,16 @@
+# Python generated files
+
+**pycache**/
+*.pyc
+
+# Virtual environment
+
+.venv/
+
+# Environment variables and secrets
+
+.env
+
+# Local application data
+
+data/tickets.json
