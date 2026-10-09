@@ -42,5 +42,19 @@ def create_ticket(title, category, urgency, affected_users):
 
 # print(create_ticket("", "network", "high", 15))
 # print(create_ticket("Wi-Fi is down", "finance", "high", 15))
-print(create_ticket("Wi-Fi is down", "network", "high", "five"))
+# print(create_ticket("Wi-Fi is down", "network", "high", "five"))
 # print(create_ticket("Wi-Fi is down", "network", "high", True))
+
+
+def generate_ticket_id(records):
+    for record in records:
+        ticket_id = record["id"]
+        numbers = []
+        for id in ticket_id:
+            numbers.append(int(id[1:]))
+        
+        max_id = max(numbers)
+
+        new_id = "T" + str(max_id + 1)
+
+        return new_id
