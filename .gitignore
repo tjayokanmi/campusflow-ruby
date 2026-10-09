@@ -1,6 +1,6 @@
 # Python generated files
 
-**pycache**/
+__pycache__/
 *.pyc
 
 # Virtual environment
