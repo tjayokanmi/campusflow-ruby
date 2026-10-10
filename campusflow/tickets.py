@@ -40,6 +40,7 @@ def create_ticket(title, category, urgency, affected_users):
     return my_ticket
 
 
+records = []
 # print(create_ticket("", "network", "high", 15))
 # print(create_ticket("Wi-Fi is down", "finance", "high", 15))
 # print(create_ticket("Wi-Fi is down", "network", "high", "five"))
@@ -48,7 +49,7 @@ def create_ticket(title, category, urgency, affected_users):
 
 def generate_ticket_id(records): 
     numbers = [] 
-    if len(record) == 0:
+    if len(records) == 0:
         return "T001"
     for record in records: 
         ticket_id = record["id"]
@@ -56,3 +57,5 @@ def generate_ticket_id(records):
     max_id = max(numbers) 
     new_id = f"T{max_id + 1:03d}" 
     return new_id
+
+print(generate_ticket_id(records))
