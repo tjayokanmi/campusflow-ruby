@@ -85,6 +85,28 @@ def handle_create_ticket(tickets: list[dict], events: list[dict], data_path: str
         return
     actor = input("Enter your name: ").strip()
 
+    duplicates = detect_duplicates(
+        tickets,
+        new_ticket["category"],
+        new_ticket["title"],
+    )
+
+    if duplicates:
+        print("\n[WARNING] Possible duplicate ticket detected!")
+        print("Matching ticket IDs:", ", ".join(duplicates))
+
+        while True:
+            confirmation = input(
+                "Do you still want to create this ticket? (yes/no): "
+            ).strip().lower()
+
+            if confirmation == "yes":
+                break
+            elif confirmation == "no":
+                print("[Cancelled] Ticket was not created.")
+                return
+            else:
+                print("[Error] Please enter yes or no.")
     tickets.append(new_ticket)
 
     record_event(
